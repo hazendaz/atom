@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.hazendaz</groupId>
+        <artifactId>base-parent</artifactId>
+        <version>39</version>
+        <relativePath />
+    </parent>
+
+    <groupId>com.github.hazendaz.atom</groupId>
+    <artifactId>atom</artifactId>
+    <version>1.10.8-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>atom</name>
+    <description>Distribution for Atom</description>
+    <url>https://hazendaz.github.io/atom/</url>
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://raw.github.com/Waffle/waffle/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com/hazendaz/atom.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/hazendaz/atom.git</developerConnection>
+        <url>https://github.com/hazendaz/atom</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <site>
+            <id>gh-pages</id>
+            <name>Atom Distribution Wrapper GitHub Pages</name>
+            <url>github:https://hazendaz.github.io/atom/</url>
+        </site>
+    </distributionManagement>
+
+    <properties>
+        <atom.version>1.60.0</atom.version>
+        <download-plugin.version>1.7.0</download-plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Download -->
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>${download-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/atom/atom/releases/download/v${atom.version}/atom-amd64.tar.gz</url>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Attach Artifact -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/atom-${atom.version}.tar.gz</file>
+                                    <type>tar.gz</type>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
