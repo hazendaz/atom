@@ -67,7 +67,7 @@
 
     <properties>
         <atom.version>1.60.0</atom.version>
-        <download-plugin.version>1.7.0</download-plugin.version>
+        <download-plugin.version>1.6.8</download-plugin.version>
     </properties>
 
     <build>
