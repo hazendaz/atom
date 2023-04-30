@@ -103,8 +103,9 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>${project.build.directory}/atom-${atom.version}.tar.gz</file>
+                                    <file>${project.build.directory}/atom-amd64.tar.gz</file>
                                     <type>tar.gz</type>
+                                    <classifier>amd64</classifier>
                                 </artifact>
                             </artifacts>
                         </configuration>
