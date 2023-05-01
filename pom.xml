@@ -37,7 +37,7 @@
 
     <groupId>com.github.hazendaz.atom</groupId>
     <artifactId>atom</artifactId>
-    <version>1.10.8-SNAPSHOT</version>
+    <version>1.60.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>atom</name>
